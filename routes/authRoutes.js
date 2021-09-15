@@ -1,16 +1,16 @@
 const passport = require("passport");
-const routeDefinitions = require("./routeDefinitions");
+const RouteDefinitions = require("./RouteDefinitions");
 
 module.exports = (app) => {
   app.get(
-    routeDefinitions.GOOGLE_OATH,
+    RouteDefinitions.GOOGLE_OATH,
     passport.authenticate("google", {
       scope: ["profile", "email"],
     })
   );
 
   app.get(
-    routeDefinitions.GOOGLE_OATH_CALLBACK,
+    RouteDefinitions.GOOGLE_OATH_CALLBACK,
     passport.authenticate("google")
   );
 
