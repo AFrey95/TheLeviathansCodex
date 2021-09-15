@@ -1,7 +1,7 @@
 {
-  "name": "meal-planner",
+  "name": "the-leviathans-codex",
   "version": "0.1.0",
-  "description": "Plan healthy meals though the week.",
+  "description": "A collection of D&D resources",
   "main": "index.js",
   "engines": {
     "node": "v14.17.1",
