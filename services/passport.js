@@ -2,7 +2,7 @@ const passport = require("passport");
 const { Strategy: GoogleStrategy } = require("passport-google-oauth20");
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
-const RouteDefinitions = require("../routes/RouteDefinitions");
+const { GOOGLE_OAUTH_CALLBACK } = require("../routes/routes");
 
 const User = mongoose.model("users");
 
@@ -20,7 +20,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: RouteDefinitions.GOOGLE_OATH_CALLBACK,
+      callbackURL: GOOGLE_OAUTH_CALLBACK,
       proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -28,7 +28,10 @@ passport.use(
       if (!!existingUser) {
         done(null, existingUser);
       } else {
-        const user = await new User({ googleId: profile.id }).save();
+        const user = await new User({
+          googleId: profile.id,
+          name: profile.name,
+        }).save();
         done(null, user);
       }
     }

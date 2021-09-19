@@ -3,23 +3,25 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/sass/materialize.scss";
 
 import Header from "./Header";
 
 const App = (props) => {
+  const { fetchUser } = props;
   const [userFetched, setUserFetched] = useState(false);
 
   useEffect(() => {
-    if (!userFetched) props.fetchUser();
+    if (!userFetched) fetchUser();
     setUserFetched(true);
   }, [userFetched]);
 
   return (
-    <div className="container">
+    <div>
       <BrowserRouter>
         <div>
           <Header />
+          <div className="container">stuff</div>
           {/* <Route exact path="/" component={Home} /> */}
         </div>
       </BrowserRouter>
