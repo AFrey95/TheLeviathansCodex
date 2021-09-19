@@ -30,12 +30,16 @@ passport.use(
       if (!!existingUser) {
         done(null, existingUser);
       } else {
-        const user = await new User({
-          googleId: profile.id,
-          name: profile.name.givenName,
-          pfp: profile.photos?.[0]?.value || null, //TODO: add default photo link
-        }).save();
-        done(null, user);
+        try {
+          const user = await new User({
+            googleId: profile.id,
+            name: profile.name.givenName,
+            pfp: profile.photos?.[0]?.value || null, //TODO: add default photo link
+          }).save();
+          done(null, user);
+        } catch (err) {
+          console.error("ERROR: Could not create new user.", error);
+        }
       }
     }
   )
