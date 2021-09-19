@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import styles from "./index.module.scss";
 
@@ -28,7 +29,9 @@ const Header = (props) => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <a className="left brand-logo">The Leviathan's Codex</a>
+        <Link to="/" className="left brand-logo">
+          The Leviathan's Codex
+        </Link>
         <ul className="right">{loginContent()}</ul>
       </div>
     </nav>
