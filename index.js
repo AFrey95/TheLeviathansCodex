@@ -11,7 +11,14 @@ require("./services/passport");
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(keys.mongoURI);
+mongoose
+  .connect(keys.mongoURI)
+  .then(() => {
+    console.log("Connected to mongodb");
+  })
+  .catch((err) => {
+    console.log("COULD NOT CONNECT TO MONGODB", err);
+  });
 
 const app = express();
 
