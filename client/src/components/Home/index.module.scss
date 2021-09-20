@@ -1,0 +1,19 @@
+.collectionCard {
+  cursor: pointer;
+  height: 20rem !important;
+  //   border: 1px solid;
+}
+
+.cardContent {
+  height: 100%;
+  width: 100%;
+  padding: 3vh;
+}
+
+.cardText {
+  display: flex;
+}
+
+.cardTitle {
+  margin-left: 5vh;
+}
