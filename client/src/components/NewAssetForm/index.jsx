@@ -104,7 +104,7 @@ const NewAssetForm = (props) => {
     FEATS: [Prerequisites],
     ITEMS: [ItemType, Magical, RequiresAttunement, Rarity],
     MECHANIC: [],
-    MONSTERs: [
+    MONSTERS: [
       ArmorClass,
       HitPoints,
       Speed,
