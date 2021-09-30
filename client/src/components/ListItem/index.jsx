@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as icons from "@fortawesome/free-solid-svg-icons";
 import c from "classnames";
@@ -10,7 +10,8 @@ import styles from "./index.module.scss";
 const { Impression } = constants;
 
 const ListItem = ({ data, fields, star = false }) => {
-  const ref = useRef();
+  const location = useLocation();
+  const history = useHistory();
 
   const getColorFromImpression = (impression) => {
     switch (impression) {
@@ -36,14 +37,18 @@ const ListItem = ({ data, fields, star = false }) => {
     </div>
   );
 
-  const handleClick = () => {
+  const openPage = () => {
+    history.push(`${location.pathname}/${data.docId}`);
+  };
+
+  const openSource = () => {
     window.open(data.link);
   };
 
   return (
     <div className={c(styles.row, "row")}>
-      <div className="col s6 offset-s3" onClick={() => ref.current.click()}>
-        <div className={c(styles.cardPanel, "card-panel hoverable")}>
+      <div className="col s6 offset-s3">
+        <div className={c(styles.cardPanel, "card-panel")}>
           <div className={c(styles.cardHeader)}>
             <div className={c(styles.topLayer, "valign-wrapper")}>
               <div className={c(styles.titleAndIcon)}>
@@ -73,15 +78,20 @@ const ListItem = ({ data, fields, star = false }) => {
               )
             )}
             <p className={c(styles.description)}>{data.description}</p>
-            <FontAwesomeIcon
-              icon={icons.faExternalLinkAlt}
-              className="hoverable"
-              onClick={handleClick}
-            />
+            <div className={c(styles.buttonContainer, "right-align")}>
+              <div
+                className={c(styles.firstButton, "waves-effect btn")}
+                onClick={openSource}
+              >
+                Source <FontAwesomeIcon icon={icons.faExternalLinkAlt} />
+              </div>
+              <div className="waves-effect btn" onClick={openPage}>
+                Open
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <Link to={`/ancestries/${data.docId}`} innerRef={ref} />
     </div>
   );
 };
