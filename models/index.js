@@ -4,6 +4,7 @@ require("./Class");
 require("./Feat");
 require("./Item");
 require("./Mechanic");
+require('./Monster')
 require("./Profession");
 require("./Spell");
 require("./Subclass");

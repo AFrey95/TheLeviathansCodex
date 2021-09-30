@@ -36,8 +36,8 @@ const MonstersList = (props) => {
   );
 };
 
-const mapStateToProps = ({ ancestries }) => {
-  return { ancestries };
+const mapStateToProps = ({ monsters }) => {
+  return { monsters };
 };
 
-export default MonstersList;
+export default connect(mapStateToProps, actions)(MonstersList);

@@ -83,6 +83,11 @@ const Home = () => {
           icon={icons.faBookDead}
           route="/items"
         />
+        <CollectionCard
+          title="Monsters"
+          icon={icons.faPastafarianism}
+          route="/monsters"
+        />
       </CollectionTwoColumns>
     </div>
   );

@@ -275,7 +275,7 @@ export const fetchSubclasses = () => {
 export const fetchSubclass = (id) => {
   return async (dispatch) => {
     const res = await axios.get(`/api/subclasses/${id}`);
-    dispatch({ type: FETCH_ANCESTRY_ONE, payload: res.data });
+    dispatch({ type: FETCH_SUBCLASS_ONE, payload: res.data });
   };
 };
 
