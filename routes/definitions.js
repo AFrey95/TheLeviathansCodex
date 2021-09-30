@@ -13,6 +13,8 @@ module.exports = {
   ITEMS_ID: "/api/items/:id",
   MECHANICS: "/api/mechanics",
   MECHANICS_ID: "/api/mechanics/:id",
+  MONSTERS: "/api/monsters",
+  MONSTERS_ID: "/api/monsters/:id",
   PROFESSIONS: "/api/mechanics",
   PROFESSIONS_ID: "/api/mechanics/:id",
   SPELLS: "/api/spells",
