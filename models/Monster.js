@@ -22,3 +22,5 @@ const monsterSchema = new mongoose.Schema({
   lairActions: String,
   legendaryActions: String,
 });
+
+mongoose.model("monsters", monsterSchema);
