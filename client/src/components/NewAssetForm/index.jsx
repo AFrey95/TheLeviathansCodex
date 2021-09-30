@@ -7,6 +7,7 @@ import styles from "./index.module.scss";
 import FormType from "./FormType";
 import useForm from "hooks/useForm";
 import useCheckbox from "hooks/useCheckbox";
+import useTextarea from "hooks/useTextarea";
 import * as actions from "actions";
 
 const {
@@ -25,7 +26,10 @@ const {
 const NewAssetForm = (props) => {
   const [formType, setFormType] = useState(ANCESTRIES);
   const [name, Name, setName] = useForm("", "Name");
-  const [description, Description, setDescription] = useForm("", "Description");
+  const [description, Description, setDescription] = useTextarea(
+    "",
+    "Description"
+  );
   const [source, Source, setSource] = useForm("", "Source");
   const [impression, Impression, setImpression] = useForm("", "Impression");
   const [link, Link, setLink] = useForm("", "Link");
@@ -125,8 +129,9 @@ const NewAssetForm = (props) => {
 
   const formInputs = () => (
     <div>
-      {[Name, Description, Source, Impression, Link]}
+      {[Name, Source, Impression, Link]}
       {inputsByType[formType]}
+      {Description}
     </div>
   );
 
