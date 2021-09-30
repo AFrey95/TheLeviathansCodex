@@ -4,9 +4,9 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const path = require("path");
 
-const authRoutes = require("./routes/authRoutes");
+const routes = require("./routes");
 const keys = require("./config/keys");
-require("./models/User");
+require("./models");
 require("./services/passport");
 
 const PORT = process.env.PORT || 5000;
@@ -31,7 +31,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-authRoutes(app);
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
+
+routes(app);
 
 if (process.env.NODE_ENV === "production") {
   // serve up js, css, etc

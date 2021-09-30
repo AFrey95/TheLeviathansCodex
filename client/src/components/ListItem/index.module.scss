@@ -1,0 +1,56 @@
+.row {
+  margin-bottom: 0 !important;
+}
+
+.cardPanel {
+  padding: 1.5vh !important;
+}
+
+.cardHeader {
+  // display: flex;
+  margin-bottom: 0.5vh;
+}
+
+.topLayer {
+  display: flex;
+}
+
+.titleAndIcon {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+.cardTitle {
+  padding: none !important;
+  margin-top: 0;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.impression {
+  flex: 0 0 auto;
+  padding: 1vh;
+  border-radius: 2px;
+}
+
+.cardSource {
+  margin-left: 0.8vw;
+  margin-top: -0.7vh;
+  font-size: small;
+}
+
+.dataPoint {
+  display: flex;
+}
+
+.dataLabel {
+  font-style: italic;
+  font-weight: bold;
+  margin-right: 0.4vw;
+  white-space: nowrap;
+}
+
+.description {
+  margin-left: 1vw;
+  text-indent: 1vw;
+}

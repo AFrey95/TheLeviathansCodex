@@ -7,6 +7,7 @@ import styles from "./index.module.scss";
 
 const Header = (props) => {
   const loginStatusLink = () => {
+    console.log("Auth", props.auth);
     switch (props.auth) {
       case null:
         return null;
@@ -25,8 +26,6 @@ const Header = (props) => {
     }
   };
 
-  console.log(props.auth);
-
   return (
     <nav>
       <div className="nav-wrapper">
@@ -34,13 +33,20 @@ const Header = (props) => {
           The Leviathan's Codex
         </Link>
         <ul className="right">
+          {props.auth?.role === "ADMIN" && (
+            <li>
+              <Link to="/new" className="waves-effect waves-light btn">
+                Add Stuff
+              </Link>
+            </li>
+          )}
           {loginStatusLink()}
-          <li>
+          {/* <li>
             <img
               className={c(styles.headerImage, "responsive-img circle")}
               src={props.auth?.pfp || null}
             />
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

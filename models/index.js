@@ -1,0 +1,10 @@
+require("./Ancestry");
+require("./Background");
+require("./Class");
+require("./Feat");
+require("./Item");
+require("./Mechanic");
+require("./Profession");
+require("./Spell");
+require("./Subclass");
+require("./User");

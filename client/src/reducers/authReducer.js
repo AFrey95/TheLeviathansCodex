@@ -1,7 +1,7 @@
-import { FETCH_USER } from "../actions/types";
+import { FETCH_USER } from "actions/types";
 
-export default (state = null, action) => {
-  console.log(action);
+const authReducer = (state = null, action) => {
+  // console.log(action);
 
   switch (action.type) {
     case FETCH_USER:
@@ -11,3 +11,5 @@ export default (state = null, action) => {
       return state;
   }
 };
+
+export default authReducer;

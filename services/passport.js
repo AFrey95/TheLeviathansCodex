@@ -3,6 +3,7 @@ const { Strategy: GoogleStrategy } = require("passport-google-oauth20");
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
 const { GOOGLE_OAUTH_CALLBACK } = require("../routes/definitions");
+const UserRoles = require("../models/UserRoles");
 
 const User = mongoose.model("users");
 
@@ -25,7 +26,6 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       // TODO: Add try/catch blocks to the async calls
-      console.log(profile);
       const existingUser = await User.findOne({ googleId: profile.id });
       if (!!existingUser) {
         done(null, existingUser);
@@ -35,6 +35,7 @@ passport.use(
             googleId: profile.id,
             name: profile.name.givenName,
             pfp: profile.photos?.[0]?.value || null, //TODO: add default photo link
+            role: UserRoles.NEW,
           }).save();
           done(null, user);
         } catch (err) {

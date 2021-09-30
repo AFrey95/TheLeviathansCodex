@@ -1,0 +1,6 @@
+Planned features
+- Search function
+- user management page
+- monsters
+- single card view
+- link to source
