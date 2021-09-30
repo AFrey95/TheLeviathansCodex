@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Select } from "react-materialize";
-import _ from "lodash";
+import _, { set } from "lodash";
 import c from "classnames";
 import styles from "./index.module.scss";
 import FormType from "./FormType";
@@ -239,6 +239,8 @@ const NewAssetForm = (props) => {
     setLanguages("");
     setEquipment("");
     setProfessions("");
+    setMonsterType("");
+    setTerrain("");
     setHitDice("");
     setProficiencies("");
     setFeatures("");
