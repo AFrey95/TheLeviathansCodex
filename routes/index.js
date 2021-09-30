@@ -6,6 +6,7 @@ module.exports = (app) => {
   require("./featRoutes")(app);
   require("./itemRoutes")(app);
   require("./mechanicRoutes")(app);
+  require("./monsterRoutes")(app);
   require("./professionRoutes")(app);
   require("./spellRoutes")(app);
   require("./subclassRoutes")(app);
