@@ -30,12 +30,15 @@ const ListItem = ({ data, fields, star = false }) => {
     }
   };
 
-  const DataPoint = (props) => (
-    <div className={c(styles.dataPoint)}>
-      <div className={c(styles.dataLabel)}>{props.label}.</div>
-      <div className={c(styles.dataValue)}>{props.value}</div>
-    </div>
-  );
+  const DataPoint = (props) =>
+    props.value !== null &&
+    props.value !== undefined &&
+    props.value !== "" && (
+      <div className={c(styles.dataPoint)}>
+        <div className={c(styles.dataLabel)}>{props.label}.</div>
+        <div className={c(styles.dataValue)}>{props.value}</div>
+      </div>
+    );
 
   const openPage = () => {
     history.push(`${location.pathname}/${data.docId}`);
