@@ -81,7 +81,7 @@ const Home = () => {
         <CollectionCard
           title="Mechanics"
           icon={icons.faBookDead}
-          route="/items"
+          route="/mechanics"
         />
         <CollectionCard
           title="Monsters"
