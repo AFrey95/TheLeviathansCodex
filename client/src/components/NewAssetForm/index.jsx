@@ -64,6 +64,8 @@ const NewAssetForm = (props) => {
   const [isRequiresAttunement, RequiresAttunement, setIsRequiresAttunement] =
     useCheckbox(false, "Requires Attunement");
   const [rarity, Rarity, setRarity] = useForm("", "Rarity");
+  const [monsterType, MonsterType, setMonsterType] = useForm("", "Type");
+  const [terrain, Terrain, setTerrain] = useForm("", "Terrain");
   const [armorClass, ArmorClass, setArmorClass] = useForm("", "Armor Class");
   const [hitPoints, HitPoints, setHitPoints] = useForm("", "Hit Points");
   const [skills, Skills, setSkills] = useForm("", "Skills");
@@ -109,6 +111,8 @@ const NewAssetForm = (props) => {
     ITEMS: [ItemType, Magical, RequiresAttunement, Rarity],
     MECHANICS: [],
     MONSTERS: [
+      MonsterType,
+      Terrain,
       ArmorClass,
       HitPoints,
       Speed,
@@ -195,7 +199,7 @@ const NewAssetForm = (props) => {
         break;
       case MONSTERS:
         // prettier-ignore
-        props.postMonster(name, description, source, impression, link, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions);
+        props.postMonster(name, description, source, impression, link, monsterType, terrain, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions);
         resetForm();
         break;
       case PROFESSIONS:

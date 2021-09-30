@@ -202,12 +202,12 @@ export const fetchMonster = (id) => {
 };
 
 // prettier-ignore
-export const postMonster = (name, description, source, impression, link, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions) => {
+export const postMonster = (name, description, source, impression, link, type, terrain, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions) => {
   return async (dispatch) => {
     dispatch({ type: POST, payload: "pending" });
     const res = await axios.post('/api/monsters', {
       // prettier-ignore
-      name, description, source, impression, link, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions
+      name, description, source, impression, link, type, terrain, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions
     });
     dispatch({ type: POST, payload: res.status });
   }

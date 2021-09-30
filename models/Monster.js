@@ -8,6 +8,7 @@ const monsterSchema = new mongoose.Schema({
   impression: String,
   link: String,
 
+  type: String,
   terrain: String,
   armorClass: String,
   hitPoints: String,
