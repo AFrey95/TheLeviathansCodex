@@ -16,11 +16,11 @@ import ItemsList from "components/ItemsList";
 import MechanicsList from "components/MechanicsList";
 import MonstersList from "components/MonstersList";
 import ProfessionsList from "components/ProfessionsList";
+import RetainersList from "components/RetainersList";
+import SpellsList from "components/SpellsList";
 import SubclassesList from "components/SubclassesList";
 
 import styles from "./index.module.scss";
-import RetainersList from "components/RetainersList";
-import SpellsList from "components/SpellsList";
 
 const App = (props) => {
   const { auth, fetchUser } = props;
@@ -51,7 +51,7 @@ const App = (props) => {
                   <Route exact path="/monsters" component={MonstersList} />
                   <Route exact path="/professions" component={ProfessionsList} />
                   <Route exact path="/retainers" component={RetainersList} />
-                  <Route exact path="/spells" components={SpellsList} />
+                  <Route exact path="/spells" component={SpellsList} />
                   <Route exact path="/subclasses" component={SubclassesList} />
                 </React.Fragment>
               )}
