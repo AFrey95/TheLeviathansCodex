@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import c from "classnames";
 import * as actions from "actions";
@@ -19,10 +19,11 @@ import ProfessionsList from "components/ProfessionsList";
 import SubclassesList from "components/SubclassesList";
 
 import styles from "./index.module.scss";
+import RetainersList from "components/RetainersList";
+import SpellsList from "components/SpellsList";
 
 const App = (props) => {
   const { auth, fetchUser } = props;
-  const history = useHistory();
 
   useEffect(() => {
     fetchUser();
@@ -42,21 +43,15 @@ const App = (props) => {
                   <Route exact path="/" component={Home} />
                   <Route exact path="/new" component={NewAssetForm} />
                   <Route exact path="/ancestries" component={AncestriesList} />
-                  <Route
-                    exact
-                    path="/backgrounds"
-                    component={BackgroundsList}
-                  />
+                  <Route exact path="/backgrounds" component={BackgroundsList} />
                   <Route exact path="/classes" component={ClassesList} />
                   <Route exact path="/feats" component={FeatsList} />
                   <Route exact path="/items" component={ItemsList} />
                   <Route exact path="/mechanics" component={MechanicsList} />
                   <Route exact path="/monsters" component={MonstersList} />
-                  <Route
-                    exact
-                    path="/professions"
-                    component={ProfessionsList}
-                  />
+                  <Route exact path="/professions" component={ProfessionsList} />
+                  <Route exact path="/retainers" component={RetainersList} />
+                  <Route exact path="/spells" components={SpellsList} />
                   <Route exact path="/subclasses" component={SubclassesList} />
                 </React.Fragment>
               )}
