@@ -71,7 +71,7 @@ const ListItem = ({ data, fields, star = false }) => {
           </div>
 
           <div>
-            {fields.map((field) =>
+            {fields?.map((field) =>
               field.length > 2 ? (
                 data[field[2]] && (
                   <DataPoint label={field[0]} value={data[field[1]]} />
