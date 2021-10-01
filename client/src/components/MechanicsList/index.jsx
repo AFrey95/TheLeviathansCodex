@@ -19,8 +19,8 @@ const MechanicsList = (props) => {
   );
 };
 
-const mapStateToProps = ({ ancestries }) => {
-  return { ancestries };
+const mapStateToProps = ({ mechanics }) => {
+  return { mechanics };
 };
 
 export default connect(mapStateToProps, actions)(MechanicsList);

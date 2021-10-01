@@ -18,6 +18,7 @@ const MonstersList = (props) => {
         <ListItem
           data={monster}
           fields={[
+            ["Type", "type"],
             ["Terrain", "terrain"],
             ["Armor Class", "armorClass"],
             ["Hit Points", "hitPoints"],
