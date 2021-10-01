@@ -249,14 +249,11 @@ const NewAssetForm = (props) => {
         ) : (
           <div>
             <Select className={styles.selectType} label="Form Type" value={formType} onChange={(event) => setFormType(event.target.value)}>
-              {_.map(FormType, (type) => {
-                console.log(type);
-                return (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                );
-              })}
+              {_.map(FormType, (type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
             </Select>
             {formInputs()}
           </div>

@@ -7,7 +7,6 @@ import styles from "./index.module.scss";
 
 const Header = (props) => {
   const loginStatusLink = () => {
-    console.log("Auth", props.auth);
     switch (props.auth) {
       case null:
         return null;

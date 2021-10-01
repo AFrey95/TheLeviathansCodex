@@ -34,7 +34,6 @@ module.exports = (app, Model, route, routeWithId) => {
       params[param] = req.body[param];
     });
     params.docId = `${_.kebabCase(params.name)}-${shortid.generate()}`;
-    console.log(params);
     const model = new Model(params);
 
     try {

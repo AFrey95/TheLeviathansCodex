@@ -10,8 +10,6 @@ const MonstersList = (props) => {
     fetchMonsters();
   }, []);
 
-  console.log(monsters);
-
   return (
     <div>
       {monsters?.map((monster) => (

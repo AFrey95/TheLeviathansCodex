@@ -10,6 +10,8 @@ const SpellsList = (props) => {
     fetchSpells();
   }, []);
 
+  console.log(spells);
+
   return (
     <div>
       {spells?.map((spell) => (
