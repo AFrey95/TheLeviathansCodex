@@ -16,4 +16,4 @@ const retainerSchema = new mongoose.Schema({
   specialActions: String,
 });
 
-mongoose.model("retainer", retainerSchema);
+mongoose.model("retainers", retainerSchema);
