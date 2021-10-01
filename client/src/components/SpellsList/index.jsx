@@ -19,6 +19,10 @@ const SpellsList = (props) => {
             ["Level", "level"],
             ["School", "school"],
             ["Classes", "classes"],
+            ["Casting Time", "castingTime"],
+            ["Range", "range"],
+            ["Components", "components"],
+            ["Duration", "duration"],
           ]}
         />
       ))}

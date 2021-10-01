@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Select } from "react-materialize";
-import _, { set } from "lodash";
+import _ from "lodash";
 import c from "classnames";
 import styles from "./index.module.scss";
 import FormType from "./FormType";
@@ -10,102 +10,66 @@ import useCheckbox from "hooks/useCheckbox";
 import useTextarea from "hooks/useTextarea";
 import * as actions from "actions";
 
-const {
-  ANCESTRIES,
-  BACKGROUNDS,
-  CLASSES,
-  FEATS,
-  ITEMS,
-  MECHANICS,
-  MONSTERS,
-  PROFESSIONS,
-  SPELLS,
-  SUBCLASSES,
-} = FormType;
+const { ANCESTRIES, BACKGROUNDS, CLASSES, FEATS, ITEMS, MECHANICS, MONSTERS, PROFESSIONS, RETAINERS, SPELLS, SUBCLASSES } = FormType;
 
 const NewAssetForm = (props) => {
-  const [formType, setFormType] = useState(ANCESTRIES);
-  const [name, Name, setName] = useForm("", "Name");
-  const [description, Description, setDescription] = useTextarea(
-    "",
-    "Description"
-  );
-  const [source, Source, setSource] = useForm("", "Source");
-  const [impression, Impression, setImpression] = useForm("", "Impression");
-  const [link, Link, setLink] = useForm("", "Link");
-  const [abilityScoreIncrease, AbilityScoreIncrease, setAbilityScoreIncrease] =
-    useForm("", "Ability Score Increase");
+  const [abilityScoreIncrease, AbilityScoreIncrease, setAbilityScoreIncrease] = useForm("", "Ability Score Increase");
+  const [actions, Actions, setActions] = useForm("", "Actions");
   const [ageRange, AgeRange, setAgeRange] = useForm("", "AgeRange");
   const [alignment, Alignment, setAlignment] = useForm("", "Alignment");
-  const [size, Size, setSize] = useForm("", "Size");
-  const [speed, Speed, setSpeed] = useForm("", "Speed");
-  const [traits, Traits, setTraits] = useForm("", "Traits");
-  const [isAdvancedBg, AdvancedBg, setIsAdvancedBg] = useCheckbox(
-    false,
-    "Advanced Background"
-  );
-  const [skillProficiencies, SkillProficiencies, setSkillProficiencies] =
-    useForm("", "Skill Proficiencies");
-  const [languages, Languages, setLanguages] = useForm("", "Languages");
-  const [equipment, Equipment, setEquipment] = useForm("", "Equipment");
-  const [professions, Professions, setProfessions] = useForm("", "Professions");
-  const [hitDice, HitDice, setHitDice] = useForm("", "Hit Dice");
-  const [proficiencies, Proficiencies, setProficiencies] = useForm(
-    "",
-    "Proficiencies"
-  );
-  const [features, Features, setFeatures] = useForm("", "Features");
-  const [prerequisites, Prerequisites, setPrerequisites] = useForm(
-    "",
-    "Prerequisites"
-  );
-  const [itemType, ItemType, setItemType] = useForm("", "Item Type");
-  const [isMagical, Magical, setIsMagical] = useCheckbox(false, "Magical");
-  const [isRequiresAttunement, RequiresAttunement, setIsRequiresAttunement] =
-    useCheckbox(false, "Requires Attunement");
-  const [rarity, Rarity, setRarity] = useForm("", "Rarity");
-  const [monsterType, MonsterType, setMonsterType] = useForm("", "Type");
-  const [terrain, Terrain, setTerrain] = useForm("", "Terrain");
   const [armorClass, ArmorClass, setArmorClass] = useForm("", "Armor Class");
-  const [hitPoints, HitPoints, setHitPoints] = useForm("", "Hit Points");
-  const [skills, Skills, setSkills] = useForm("", "Skills");
-  const [senses, Senses, setSenses] = useForm("", "Senses");
-  const [challengeRating, ChallengeRating, setChallengeRating] = useForm(
-    "",
-    "Challenge Rating"
-  );
-  const [actions, Actions, setActions] = useForm("", "Actions");
-  const [reactions, Reactions, setReactions] = useForm("", "Reactions");
-  const [lairActions, LairActions, setLairActions] = useForm(
-    "",
-    "Lair Actions"
-  );
-  const [legendaryActions, LegendaryActions, setLegendaryActions] = useForm(
-    "",
-    "Legendary Actions"
-  );
-  const [school, School, setSchool] = useForm("", "School");
+  const [castingTime, CastingTime, setCastingTime] = useForm("", "Casting Time");
+  const [challengeRating, ChallengeRating, setChallengeRating] = useForm("", "Challenge Rating");
   const [classes, Classes, setClasses] = useForm("", "Classes");
+  const [_class, Class, setClass] = useForm("", "Main Class");
+  const [components, Components, setComponents] = useForm("", "Components");
+  const [conditionImmunities, ConditionImmunities, setConditionImmunities] = useForm("", "Condition Immunities");
+  const [damageImmunities, DamageImmunities, setDamageImmunities] = useForm("", "Damage Immunities");
+  const [damageResistances, DamageResistances, setDamageResistances] = useForm("", "Damage Resistances");
+  const [damageVulnerabilities, DamageVulnerabilities, setDamageVulnerabilities] = useForm("", "Damage Vulnerabilities");
+  const [description, Description, setDescription] = useTextarea("", "Description");
+  const [duration, Duration, setDuration] = useForm("", "Duration");
+  const [equipment, Equipment, setEquipment] = useForm("", "Equipment");
+  const [features, Features, setFeatures] = useForm("", "Features");
+  const [formType, setFormType] = useState(ANCESTRIES);
+  const [hitDice, HitDice, setHitDice] = useForm("", "Hit Dice");
+  const [hitPoints, HitPoints, setHitPoints] = useForm("", "Hit Points");
+  const [impression, Impression, setImpression] = useForm("", "Impression");
+  const [isAdvancedBg, AdvancedBg, setIsAdvancedBg] = useCheckbox(false, "Advanced Background");
+  const [isMagical, Magical, setIsMagical] = useCheckbox(false, "Magical");
+  const [isRequiresAttunement, RequiresAttunement, setIsRequiresAttunement] = useCheckbox(false, "Requires Attunement");
+  const [itemType, ItemType, setItemType] = useForm("", "Item Type");
+  const [lairActions, LairActions, setLairActions] = useForm("", "Lair Actions");
+  const [languages, Languages, setLanguages] = useForm("", "Languages");
+  const [legendaryActions, LegendaryActions, setLegendaryActions] = useForm("", "Legendary Actions");
   const [level, Level, setLevel] = useForm("", "Level");
-  const [clazz, Class, setClass] = useForm("", "Main Class");
+  const [link, Link, setLink] = useForm("", "Link");
+  const [monsterType, MonsterType, setMonsterType] = useForm("", "Type");
+  const [name, Name, setName] = useForm("", "Name");
+  const [prerequisites, Prerequisites, setPrerequisites] = useForm("", "Prerequisites");
+  const [primaryAbility, PrimaryAbility, setPrimaryAbility] = useForm("", "Primary Ability");
+  const [professions, Professions, setProfessions] = useForm("", "Professions");
+  const [proficiencies, Proficiencies, setProficiencies] = useForm("", "Proficiencies");
+  const [range, Range, setRange] = useForm("", "Range");
+  const [rarity, Rarity, setRarity] = useForm("", "Rarity");
+  const [reactions, Reactions, setReactions] = useForm("", "Reactions");
+  const [saves, Saves, setSaves] = useForm("", "Saves");
+  const [savingThrows, SavingThrows, setSavingThrows] = useForm("", "Saving Throws");
+  const [school, School, setSchool] = useForm("", "School");
+  const [senses, Senses, setSenses] = useForm("", "Senses");
+  const [signatureAttack, SignatureAttack, setSignatureAttack] = useForm("", "Signature Attack");
+  const [size, Size, setSize] = useForm("", "Size");
+  const [skillProficiencies, SkillProficiencies, setSkillProficiencies] = useForm("", "Skill Proficiencies");
+  const [skills, Skills, setSkills] = useForm("", "Skills");
+  const [source, Source, setSource] = useForm("", "Source");
+  const [specialActions, SpecialActions, setSpecialActions] = useForm("", "Special Actions");
+  const [speed, Speed, setSpeed] = useForm("", "Speed");
+  const [terrain, Terrain, setTerrain] = useForm("", "Terrain");
+  const [traits, Traits, setTraits] = useForm("", "Traits");
 
   const inputsByType = {
-    ANCESTRIES: [
-      AbilityScoreIncrease,
-      AgeRange,
-      Alignment,
-      Languages,
-      Size,
-      Speed,
-      Traits,
-    ],
-    BACKGROUNDS: [
-      AdvancedBg,
-      SkillProficiencies,
-      Languages,
-      Equipment,
-      Professions,
-    ],
+    ANCESTRIES: [AbilityScoreIncrease, AgeRange, Alignment, Languages, Size, Speed, Traits],
+    BACKGROUNDS: [AdvancedBg, SkillProficiencies, Languages, Equipment, Professions],
     CLASSES: [HitDice, Proficiencies, Equipment, Features],
     FEATS: [Prerequisites],
     ITEMS: [ItemType, Magical, RequiresAttunement, Rarity],
@@ -116,7 +80,12 @@ const NewAssetForm = (props) => {
       ArmorClass,
       HitPoints,
       Speed,
+      SavingThrows,
       Skills,
+      DamageVulnerabilities,
+      DamageResistances,
+      DamageImmunities,
+      ConditionImmunities,
       Senses,
       Languages,
       ChallengeRating,
@@ -127,7 +96,8 @@ const NewAssetForm = (props) => {
       LegendaryActions,
     ],
     PROFESSIONS: [SkillProficiencies, Equipment],
-    SPELLS: [School, Classes, Level],
+    RETAINERS: [ArmorClass, PrimaryAbility, Saves, Skills, SignatureAttack, SpecialActions],
+    SPELLS: [Level, School, Classes, CastingTime, Range, Components, Duration],
     SUBCLASSES: [Class, Features],
   };
 
@@ -143,21 +113,10 @@ const NewAssetForm = (props) => {
     <div className={c(styles.actions, "row")}>
       <div className="col s6 offset-s3">
         <div className="right">
-          <a
-            href="#!"
-            className={c(
-              styles.resetButton,
-              "waves-effect waves-teal btn-flat"
-            )}
-            onClick={resetForm}
-          >
+          <a href="#!" className={c(styles.resetButton, "waves-effect waves-teal btn-flat")} onClick={resetForm}>
             reset
           </a>
-          <a
-            href="#!"
-            className={c(styles.submitButton, "waves-effect waves-light btn")}
-            onClick={submitForm}
-          >
+          <a href="#!" className={c(styles.submitButton, "waves-effect waves-light btn")} onClick={submitForm}>
             submit
           </a>
         </div>
@@ -199,7 +158,7 @@ const NewAssetForm = (props) => {
         break;
       case MONSTERS:
         // prettier-ignore
-        props.postMonster(name, description, source, impression, link, monsterType, terrain, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions);
+        props.postMonster(name, description, source, impression, link, monsterType, terrain, armorClass, hitPoints, speed, savingThrows, skills, damageVulnerabilities, damageResistances, damageImmunities, conditionImmunities, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions);
         resetForm();
         break;
       case PROFESSIONS:
@@ -207,14 +166,19 @@ const NewAssetForm = (props) => {
         props.postProfession(name, description, source, impression, link, skillProficiencies, equipment);
         resetForm();
         break;
+      case RETAINERS:
+        // prettier-ignore
+        props.postRetainer(name, description, source, impression, link, armorClass, primaryAbility, saves, skills, signatureAttack, specialActions);
+        resetForm();
+        break;
       case SPELLS:
         // prettier-ignore
-        props.postSpell(name, description, source, impression, link, school, classes, level);
+        props.postSpell(name, description, source, impression, link, level, school, classes, castingTime, range, components, duration);
         resetForm();
         break;
       case SUBCLASSES:
         // prettier-ignore
-        props.postSubclass(name, description, source, impression, link, clazz, features);
+        props.postSubclass(name, description, source, impression, link, _class, features);
         resetForm();
         break;
       default:
@@ -223,45 +187,58 @@ const NewAssetForm = (props) => {
   };
 
   const resetForm = () => {
-    setName("");
-    setDescription("");
-    setSource("");
-    setImpression("");
-    setLink("");
     setAbilityScoreIncrease("");
+    setActions("");
     setAgeRange("");
     setAlignment("");
-    setSize("");
-    setSpeed("");
-    setTraits("");
-    setIsAdvancedBg(false);
-    setSkillProficiencies("");
-    setLanguages("");
+    setArmorClass("");
+    setCastingTime("");
+    setChallengeRating("");
+    setClass("");
+    setClasses("");
+    setComponents("");
+    setConditionImmunities("");
+    setDamageImmunities("");
+    setDamageResistances("");
+    setDamageVulnerabilities("");
+    setDescription("");
+    setDuration("");
     setEquipment("");
-    setProfessions("");
-    setMonsterType("");
-    setTerrain("");
-    setHitDice("");
-    setProficiencies("");
     setFeatures("");
-    setPrerequisites("");
-    setItemType("");
+    setHitDice("");
+    setHitPoints("");
+    setImpression("");
+    setIsAdvancedBg(false);
     setIsMagical(false);
     setIsRequiresAttunement(false);
-    setRarity("");
-    setArmorClass("");
-    setHitPoints("");
-    setSkills("");
-    setSenses("");
-    setChallengeRating("");
-    setActions("");
-    setReactions("");
+    setItemType("");
     setLairActions("");
+    setLanguages("");
     setLegendaryActions("");
-    setSchool("");
-    setClasses("");
     setLevel("");
-    setClass("");
+    setLink("");
+    setMonsterType("");
+    setName("");
+    setPrerequisites("");
+    setPrimaryAbility("");
+    setProfessions("");
+    setProficiencies("");
+    setRange("");
+    setRarity("");
+    setReactions("");
+    setSaves("");
+    setSavingThrows("");
+    setSchool("");
+    setSenses("");
+    setSignatureAttack("");
+    setSize("");
+    setSkillProficiencies("");
+    setSkills("");
+    setSource("");
+    setSpecialActions("");
+    setSpeed("");
+    setTerrain("");
+    setTraits("");
   };
 
   return (
@@ -271,12 +248,7 @@ const NewAssetForm = (props) => {
           <div className={c(styles.spinner)} />
         ) : (
           <div>
-            <Select
-              className={styles.selectType}
-              label="Form Type"
-              value={formType}
-              onChange={(event) => setFormType(event.target.value)}
-            >
+            <Select className={styles.selectType} label="Form Type" value={formType} onChange={(event) => setFormType(event.target.value)}>
               {_.map(FormType, (type) => {
                 console.log(type);
                 return (

@@ -17,6 +17,8 @@ module.exports = {
   MONSTERS_ID: "/api/monsters/:id",
   PROFESSIONS: "/api/professions",
   PROFESSIONS_ID: "/api/professions/:id",
+  RETAINERS: "/api/retainers",
+  RETAINERS_ID: "/api/retainers/:id",
   SPELLS: "/api/spells",
   SPELLS_ID: "/api/spells/:id",
   SUBCLASSES: "/api/subclasses",

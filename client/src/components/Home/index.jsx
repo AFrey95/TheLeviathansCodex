@@ -56,27 +56,16 @@ const Home = () => {
           route="/ancestries"
         />
         <CollectionCard
-          title="Classes"
-          icon={icons.faSchool}
-          route="/classes"
-        />
-        <CollectionCard
-          title="Subclasses"
-          icon={icons.faTheaterMasks}
-          route="/subclasses"
-        />
-        <CollectionCard
           title="Backgrounds"
           icon={icons.faUserGraduate}
           route="/backgrounds"
         />
         <CollectionCard
-          title="Professions"
-          icon={icons.faHammer}
-          route="/professions"
+          title="Classes"
+          icon={icons.faSchool}
+          route="/classes"
         />
-        <CollectionCard title="Spells" icon={icons.faMagic} route="/spells" />
-        <CollectionCard title="Feats" icon={icons.faRunning} route="/running" />
+        <CollectionCard title="Feats" icon={icons.faRunning} route="/feats" />
         <CollectionCard title="Items" icon={icons.faFlask} route="/items" />
         <CollectionCard
           title="Mechanics"
@@ -87,6 +76,22 @@ const Home = () => {
           title="Monsters"
           icon={icons.faPastafarianism}
           route="/monsters"
+        />
+        <CollectionCard
+          title="Professions"
+          icon={icons.faHammer}
+          route="/professions"
+        />
+        <CollectionCard
+          title="Retainers"
+          icon={icons.faHandsHelping}
+          route="/retainers"
+        />
+        <CollectionCard title="Spells" icon={icons.faMagic} route="/spells" />
+        <CollectionCard
+          title="Subclasses"
+          icon={icons.faTheaterMasks}
+          route="/subclasses"
         />
       </CollectionTwoColumns>
     </div>

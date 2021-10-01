@@ -8,9 +8,13 @@ const spellSchema = new mongoose.Schema({
   impression: String,
   link: String,
 
+  level: String,
   school: String,
   classes: String,
-  level: String,
+  castingTime: String,
+  range: String,
+  components: String,
+  duration: String,
 });
 
 mongoose.model("spells", spellSchema);

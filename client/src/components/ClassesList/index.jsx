@@ -12,9 +12,9 @@ const ClassesList = (props) => {
 
   return (
     <div>
-      {classes?.map((clazz) => {
+      {classes?.map((_class) => {
         <ListItem
-          data={clazz}
+          data={_class}
           fields={[
             ["Hit Dice", "hitDice"],
             ["Proficiencies", "proficiencies"],

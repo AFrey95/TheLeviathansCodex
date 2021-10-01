@@ -16,6 +16,8 @@ import {
   FETCH_MONSTER_ONE,
   FETCH_PROFESSIONS,
   FETCH_PROFESSION_ONE,
+  FETCH_RETAINERS,
+  FETCH_RETAINER_ONE,
   FETCH_SPELLS,
   FETCH_SPELL_ONE,
   FETCH_SUBCLASSES,
@@ -202,12 +204,12 @@ export const fetchMonster = (id) => {
 };
 
 // prettier-ignore
-export const postMonster = (name, description, source, impression, link, type, terrain, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions) => {
+export const postMonster = (name, description, source, impression, link, type, terrain, armorClass, hitPoints, speed, savingThrows, skills, damageVulnerabilities, damageResistances, damageImmunities, conditionImmunities, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions) => {
   return async (dispatch) => {
     dispatch({ type: POST, payload: "pending" });
     const res = await axios.post('/api/monsters', {
       // prettier-ignore
-      name, description, source, impression, link, type, terrain, armorClass, hitPoints, speed, skills, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions
+      name, description, source, impression, link, type, terrain, armorClass, hitPoints, speed, savingThrows, skills, damageVulnerabilities, damageResistances, damageImmunities, conditionImmunities, senses, challengeRating, traits, actions, reactions, lairActions, legendaryActions
     });
     dispatch({ type: POST, payload: res.status });
   }
@@ -239,6 +241,32 @@ export const postProfession = (name, description, source, impression, link, skil
   }
 }
 
+export const fetchRetainers = () => {
+  return async (dispatch) => {
+    const res = await axios.get("/api/retainers");
+    dispatch({ type: FETCH_RETAINERS, payload: res.data });
+  };
+};
+
+export const fetchRetainer = (id) => {
+  return async (dispatch) => {
+    const res = await axios.get(`/api/retainers/${id}`);
+    dispatch({ type: FETCH_RETAINER_ONE, payload: res.data });
+  };
+};
+
+// prettier-ignore
+export const postRetainer = (name, description, source, impression, link, armorClass, primaryAbility, saves, skills, signatureAttack, specialActions) => {
+  return async (dispatch) => {
+    dispatch({ type: POST, payload: "pending" });
+    const res = await axios.post('/api/retainers', {
+      // prettier-ignore
+      name, description, source, impression, link, armorClass, primaryAbility, saves, skills, signatureAttack, specialActions
+    })
+    dispatch({ type: POST, payload: res.status });
+  }
+}
+
 export const fetchSpells = () => {
   return async (dispatch) => {
     const res = await axios.get("/api/spells");
@@ -254,12 +282,12 @@ export const fetchSpell = (id) => {
 };
 
 // prettier-ignore
-export const postSpell = (name, description, source, impression, link, school, classes, level) => {
+export const postSpell = (name, description, source, impression, link, level, school, classes, castingTime, range, components, duration) => {
   return async (dispatch) => {
     dispatch({ type: POST, payload: "pending" });
     const res = await axios.post('/api/spells', {
       // prettier-ignore
-      name, description, source, impression, link, school, classes, level
+      name, description, source, impression, link, level, school, classes, castingTime, range, components, duration
     });
     dispatch({ type: POST, payload: res.status })
   }
@@ -280,12 +308,12 @@ export const fetchSubclass = (id) => {
 };
 
 // prettier-ignore
-export const postSubclass = (name, description, source, impression, link, clazz, features) => {
+export const postSubclass = (name, description, source, impression, link, _class, features) => {
   return async (dispatch) => {
     dispatch({ type: POST, payload: "pending" });
     const res = await axios.post('/api/subclasses', {
       // prettier-ignore
-      name, description, source, impression, link, class: clazz, features
+      name, description, source, impression, link, class: _class, features
     });
     dispatch({ type: POST, payload: res.status });
   }

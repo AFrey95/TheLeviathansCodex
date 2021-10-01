@@ -8,6 +8,7 @@ module.exports = (app) => {
   require("./mechanicRoutes")(app);
   require("./monsterRoutes")(app);
   require("./professionRoutes")(app);
+  require("./retainerRoutes")(app);
   require("./spellRoutes")(app);
   require("./subclassRoutes")(app);
   // require("./userRoutes")(app);
