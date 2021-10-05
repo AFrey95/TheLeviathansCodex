@@ -1,11 +1,83 @@
-const constants = {
-  Impression: {
-    USELESS: "Useless",
-    WEAK: "Weak",
-    BALANCED: "Balanced",
-    STRONG: "Strong",
-    BUSTED: "Busted",
-  },
+export const Impression = {
+  USELESS: "Useless",
+  WEAK: "Weak",
+  BALANCED: "Balanced",
+  STRONG: "Strong",
+  BUSTED: "Busted",
 };
 
-export default constants;
+export const PageFields = {
+  ANCESTRY: [
+    ["Ability Score Increase", "abilityScoreIncrease"],
+    ["Age", "ageRange"],
+    ["Size", "size"],
+    ["Speed", "speed"],
+    ["Traits", "traits"],
+  ],
+  BACKGROUND: [
+    ["Skill Proficiencies", "skillProficiencies"],
+    ["Languages", "languages"],
+    ["Equipment", "equipment"],
+    ["Professions", "professions", "isAdvancedBg"],
+  ],
+  CLASS: [
+    ["Hit Dice", "hitDice"],
+    ["Proficiencies", "proficiencies"],
+    ["Equipment", "equipment"],
+    ["Features", "features"],
+  ],
+  FEAT: [["Prerequisites", "prerequisites"]],
+  ITEM: [
+    ["Type", "type"],
+    ["Magical", "isMagical"],
+    ["Requires Attunement", "isRequiresAttunement"],
+    ["Rarity", "rarity"],
+  ],
+  MECHANIC: [[]],
+  MONSTER: [
+    ["Type", "type"],
+    ["Terrain", "terrain"],
+    ["Armor Class", "armorClass"],
+    ["Hit Points", "hitPoints"],
+    ["Speed", "speed"],
+    ["Saving Throws", "savingThrows"],
+    ["Skills", "skills"],
+    ["Damage Vulnerabilities", "damageVulnerabilities"],
+    ["Damage Resistances", "damageResistances"],
+    ["Damage Immunities", "damageImmunities"],
+    ["Condition Immunities", "conditionImmunities"],
+    ["Senses", "senses"],
+    ["Languages", "languages"],
+    ["CR", "challengeRating"],
+    ["Traits", "traits"],
+    ["Actions", "actions"],
+    ["Reactions", "reactions"],
+    ["Lair Actions", "Lair Actions"],
+    ["Legendary Actions", "legendaryActions"],
+  ],
+  PROFESSION: [
+    ["Skill Proficiencies", "skillProficiencies"],
+    ["Equipment", "equipment"],
+  ],
+  RETAINER: [
+    ["Armor Class", "armorClass"],
+    ["Primary Ability", "primaryAbility"],
+    ["Saves", "saves"],
+    ["Skills", "skills"],
+    ["Signature Attack", "signatureAttack"],
+    ["Special Actions", "specialActions"],
+  ],
+  SPELL: [
+    ["Level", "level"],
+    ["School", "school"],
+    ["Classes", "classes"],
+    ["Casting Time", "castingTime"],
+    ["Range", "range"],
+    ["Components", "components"],
+    ["Duration", "duration"],
+  ],
+  SUBCLASS: [
+    ["Class", "class"],
+    ["Features", "features"],
+  ],
+};

@@ -8,17 +8,17 @@ import Forbidden from "components/Forbidden";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import NewAssetForm from "./components/NewAssetForm";
-import AncestriesList from "components/AncestriesList";
-import BackgroundsList from "components/BackgroundsList";
-import ClassesList from "components/ClassesList";
-import FeatsList from "components/FeatsList";
-import ItemsList from "components/ItemsList";
-import MechanicsList from "components/MechanicsList";
-import MonstersList from "components/MonstersList";
-import ProfessionsList from "components/ProfessionsList";
-import RetainersList from "components/RetainersList";
-import SpellsList from "components/SpellsList";
-import SubclassesList from "components/SubclassesList";
+import AncestryView from "components/AncestryView";
+import BackgroundView from "components/BackgroundView";
+import ClassView from "components/ClassView";
+import FeatView from "components/FeatView";
+import ItemView from "components/ItemView";
+import MechanicView from "components/MechanicView";
+import MonsterView from "components/MonsterView";
+import ProfessionView from "components/ProfessionView";
+import RetainerView from "components/RetainerView";
+import SpellView from "components/SpellView";
+import SubclassView from "components/SubclassView";
 
 import styles from "./index.module.scss";
 
@@ -42,17 +42,17 @@ const App = (props) => {
                 <React.Fragment>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/new" component={NewAssetForm} />
-                  <Route exact path="/ancestries" component={AncestriesList} />
-                  <Route exact path="/backgrounds" component={BackgroundsList} />
-                  <Route exact path="/classes" component={ClassesList} />
-                  <Route exact path="/feats" component={FeatsList} />
-                  <Route exact path="/items" component={ItemsList} />
-                  <Route exact path="/mechanics" component={MechanicsList} />
-                  <Route exact path="/monsters" component={MonstersList} />
-                  <Route exact path="/professions" component={ProfessionsList} />
-                  <Route exact path="/retainers" component={RetainersList} />
-                  <Route exact path="/spells" component={SpellsList} />
-                  <Route exact path="/subclasses" component={SubclassesList} />
+                  <Route exact path="/ancestries/:id?" component={AncestryView} />
+                  <Route exact path="/backgrounds/:id?" component={BackgroundView} />
+                  <Route exact path="/classes/:id?" component={ClassView} />
+                  <Route exact path="/feats/:id?" component={FeatView} />
+                  <Route exact path="/items/:id?" component={ItemView} />
+                  <Route exact path="/mechanics/:id?" component={MechanicView} />
+                  <Route exact path="/monsters/:id?" component={MonsterView} />
+                  <Route exact path="/professions/:id?" component={ProfessionView} />
+                  <Route exact path="/retainers/:id?" component={RetainerView} />
+                  <Route exact path="/spells/:id?" component={SpellView} />
+                  <Route exact path="/subclasses/:id?" component={SubclassView} />
                 </React.Fragment>
               )}
             </div>

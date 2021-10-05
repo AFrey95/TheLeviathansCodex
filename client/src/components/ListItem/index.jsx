@@ -1,13 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as icons from "@fortawesome/free-solid-svg-icons";
 import c from "classnames";
-import constants from "resources/constants";
+import { Impression } from "resources/constants";
 
 import styles from "./index.module.scss";
-
-const { Impression } = constants;
 
 const ListItem = ({ data, fields, star = false }) => {
   const location = useLocation();
@@ -58,34 +56,16 @@ const ListItem = ({ data, fields, star = false }) => {
                 <div className={c(styles.cardTitle)}>{data.name}</div>
                 {star && <FontAwesomeIcon icon={icons.faStar} />}
               </div>
-              <div
-                className={c(
-                  styles.impression,
-                  getColorFromImpression(data.impression)
-                )}
-              >
-                {data.impression}
-              </div>
+              <div className={c(styles.impression, getColorFromImpression(data.impression))}>{data.impression}</div>
             </div>
             <div className={c(styles.cardSource)}>{data.source}</div>
           </div>
 
           <div>
-            {fields?.map((field) =>
-              field.length > 2 ? (
-                data[field[2]] && (
-                  <DataPoint label={field[0]} value={data[field[1]]} />
-                )
-              ) : (
-                <DataPoint label={field[0]} value={data[field[1]]} />
-              )
-            )}
+            {fields?.map((field) => (field.length > 2 ? data[field[2]] && <DataPoint label={field[0]} value={data[field[1]]} /> : <DataPoint label={field[0]} value={data[field[1]]} />))}
             <p className={c(styles.description)}>{data.description}</p>
             <div className={c(styles.buttonContainer, "right-align")}>
-              <div
-                className={c(styles.firstButton, "waves-effect btn")}
-                onClick={openSource}
-              >
+              <div className={c(styles.firstButton, "waves-effect btn")} onClick={openSource}>
                 Source <FontAwesomeIcon icon={icons.faExternalLinkAlt} />
               </div>
               <div className="waves-effect btn" onClick={openPage}>
