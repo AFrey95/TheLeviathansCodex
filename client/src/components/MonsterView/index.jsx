@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 import ListItem from "components/ListItem";
 import { PageFields } from "resources/constants";
-import SingleAsset from "components/SingleAsset";
 
 const MonsterView = (props) => {
   const { currentMonster, fetchMonster, monsters, fetchMonsters } = props;
@@ -14,8 +13,8 @@ const MonsterView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentMonster} fields={PageFields.MONSTER} />
+      {props.match?.params?.id && currentMonster ? (
+        <ListItem data={currentMonster} fields={PageFields.MONSTER} />
       ) : (
         monsters?.map((monster) => <ListItem data={monster} fields={PageFields.MONSTER} />)
       )}

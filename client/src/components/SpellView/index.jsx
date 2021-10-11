@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 import ListItem from "components/ListItem";
 import { PageFields } from "resources/constants";
-import SingleAsset from "components/SingleAsset";
 
 const SpellView = (props) => {
   const { currentSpell, fetchSpell, spells, fetchSpells } = props;
@@ -14,8 +13,8 @@ const SpellView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentSpell} fields={PageFields.SPELL} />
+      {props.match?.params?.id && currentSpell ? (
+        <ListItem data={currentSpell} fields={PageFields.SPELL} />
       ) : (
         spells?.map((spell) => <ListItem data={spell} fields={PageFields.SPELL} />)
       )}

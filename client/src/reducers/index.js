@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import ancestryReducer from "./ancestryReducer";
+import ancestriesReducer from "./ancestriesReducer";
 import backgroundReducer from "./backgroundReducer";
 import classReducer from "./classReducer";
 import featReducer from "./featReducer";
@@ -15,7 +16,8 @@ import postReducer from "./postReducer";
 
 export default combineReducers({
   auth: authReducer,
-  ancestries: ancestryReducer,
+  ancestries: ancestriesReducer,
+  currentAncestry: ancestryReducer,
   backgrounds: backgroundReducer,
   classes: classReducer,
   feats: featReducer,

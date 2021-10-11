@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 import ListItem from "components/ListItem";
 import { PageFields } from "resources/constants";
-import SingleAsset from "components/SingleAsset";
 
 const ClassView = (props) => {
   const { currentClass, fetchClass, classes, fetchClasses } = props;
@@ -14,8 +13,8 @@ const ClassView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentClass} fields={PageFields.CLASS} />
+      {props.match?.params?.id && currentClass ? (
+        <ListItem data={currentClass} fields={PageFields.CLASS} />
       ) : (
         classes?.map((_class) => {
           <ListItem data={_class} fields={PageFields.CLASS} />;

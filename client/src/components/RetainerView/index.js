@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 import ListItem from "components/ListItem";
 import { PageFields } from "resources/constants";
-import SingleAsset from "components/SingleAsset";
 
 const RetainerView = (props) => {
   const { currentRetainer, fetchRetainer, retainers, fetchRetainers } = props;
@@ -14,8 +13,8 @@ const RetainerView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentRetainer} fields={PageFields.RETAINER} />
+      {props.match?.params?.id && currentRetainer ? (
+        <ListItem data={currentRetainer} fields={PageFields.RETAINER} />
       ) : (
         retainers?.map((retainer) => <ListItem data={retainer} fields={PageFields.RETAINER} />)
       )}

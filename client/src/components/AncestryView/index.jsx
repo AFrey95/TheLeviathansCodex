@@ -1,30 +1,25 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import * as actions from "actions";
+import React, { useEffect, useState } from "react";
 import { PageFields } from "resources/constants";
 import ListItem from "components/ListItem";
-import SingleAsset from "components/SingleAsset";
+import { useAncestries } from "redux/ancestries";
+import { updateAncestries, fetchAncestryById } from "api";
 
 const AncestryView = (props) => {
-  const { currentAncestry, fetchAncestry, ancestries, fetchAncestries } = props;
+  const id = props?.match?.params?.id;
 
   useEffect(() => {
-    !!props.match?.params?.id ? fetchAncestry(props.match.params.id) : fetchAncestries();
+    updateAncestries();
   }, []);
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentAncestry} fields={PageFields.ANCESTRY} />
-      ) : (
-        ancestries?.map((ancestry) => <ListItem data={ancestry} fields={PageFields.ANCESTRY} />)
-      )}
+      {useAncestries()
+        ?.filter((ancestry) => (id ? ancestry.docId === id : true))
+        ?.map((ancestry) => (
+          <ListItem data={ancestry} fields={PageFields.ANCESTRY} />
+        ))}
     </div>
   );
 };
 
-const mapStateToProps = ({ currentAncestry, ancestries }) => {
-  return { currentAncestry, ancestries };
-};
-
-export default connect(mapStateToProps, actions)(AncestryView);
+export default AncestryView;

@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from './index.module.scss'
+import React from "react";
+import styles from "./index.module.scss";
 
-const SingleAsset = () => {
-	return <div>SingleAsset</div>;
-}
+const ListItem = () => {
+  return <div>ListItem</div>;
+};
 
-export default SingleAsset
+export default ListItem;

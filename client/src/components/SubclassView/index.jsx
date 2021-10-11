@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 import ListItem from "components/ListItem";
 import { PageFields } from "resources/constants";
-import SingleAsset from "components/SingleAsset";
 
 const SubclassView = (props) => {
   const { currentSubclass, fetchSubclass, subclasses, fetchSubclasses } = props;
@@ -14,8 +13,8 @@ const SubclassView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentSubclass} fields={PageFields.SUBCLASS} />
+      {props.match?.params?.id && currentSubclass ? (
+        <ListItem data={currentSubclass} fields={PageFields.SUBCLASS} />
       ) : (
         subclasses?.map((subclass) => <ListItem data={subclass} fields={PageFields.SUBCLASS} />)
       )}

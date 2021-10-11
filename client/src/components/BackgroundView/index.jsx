@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 import { PageFields } from "resources/constants";
 import ListItem from "components/ListItem";
-import SingleAsset from "components/SingleAsset";
 
 const BackgroundView = (props) => {
   const { currentBackground, fetchBackground, backgrounds, fetchBackgrounds } = props;
@@ -14,8 +13,8 @@ const BackgroundView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentBackground} fields={PageFields.BACKGROUND} />
+      {props.match?.params?.id && currentBackground ? (
+        <ListItem data={currentBackground} fields={PageFields.BACKGROUND} />
       ) : (
         backgrounds?.map((background) => (
           <ListItem data={background} star={background.isAdvancedBg} fields={PageFields.BACKGROUND} />

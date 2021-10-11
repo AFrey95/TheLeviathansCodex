@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "actions";
 import ListItem from "components/ListItem";
-import SingleAsset from "components/SingleAsset";
+
 import { PageFields } from "resources/constants";
 
 const MechanicView = (props) => {
@@ -14,8 +14,8 @@ const MechanicView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentMechanic} fields={PageFields.MECHANIC} />
+      {props.match?.params?.id && currentMechanic ? (
+        <ListItem data={currentMechanic} fields={PageFields.MECHANIC} />
       ) : (
         mechanics?.map((mechanic) => <ListItem data={mechanic} />)
       )}

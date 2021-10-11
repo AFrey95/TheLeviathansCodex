@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 import ListItem from "components/ListItem";
 import { PageFields } from "resources/constants";
-import SingleAsset from "components/SingleAsset";
 
 const ItemView = (props) => {
   const { currentItem, fetchItem, items, fetchItems } = props;
@@ -14,8 +13,8 @@ const ItemView = (props) => {
 
   return (
     <div>
-      {props.match?.params?.id ? (
-        <SingleAsset data={currentItem} fields={PageFields.FEAT} />
+      {props.match?.params?.id && currentItem ? (
+        <ListItem data={currentItem} fields={PageFields.FEAT} />
       ) : (
         items?.map((item) => <ListItem data={item} fields={PageFields.ITEM} />)
       )}
